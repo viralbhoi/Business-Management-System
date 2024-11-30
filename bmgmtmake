@@ -1,0 +1,22 @@
+
+all: business_mgmt_sys
+
+obj = business_mgmt_sys.o employee.o inventory.o customer.o
+
+business_mgmt_sys: $(obj)`
+	g++ -o business_mgmt_sys $(obj)
+
+business_mgmt_sys.o: business_mgmt_sys.cpp employee.h inventory.h customer.h
+	g++ -g -c business_mgmt_sys.cpp
+
+employee.o: employee.cpp employee.h
+	g++ -g -c employee.cpp
+
+inventory.o: inventory.cpp inventory.h
+	g++ -g -c inventory.cpp
+
+customer.o: customer.cpp customer.h
+	g++ -g -c customer.cpp
+
+clean:
+	rm -f business_mgmt_sys $(obj)
